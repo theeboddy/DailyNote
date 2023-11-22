@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import PostForm from "./components/PostForm";
+import { PostItem } from "./components/Postitem";
+import { PostList } from "./components/PostList";
+import { MyButton } from "./components/UI/button/MyButton";
+import { MyInput } from "./components/UI/input/MyInput";
+import About from "./pages/About";
+import Posts from "./pages/Posts";
+import './styles/App.css'
+import book from './icons/book.png'
+import Navbar from "./components/UI/navbar/Navbar";
+import NotFound from "./pages/NotFound";
+import AppRouter from "./components/AppRouter";
+import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthProvider>
+      <BrowserRouter>
+        <Navbar/>
+        <AppRouter/>
+      </BrowserRouter>
+    </AuthProvider>
+  )
 }
 
 export default App;

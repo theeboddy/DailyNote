@@ -1,0 +1,10 @@
+.myTextArea {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 5px 15px;
+    margin: 5px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    min-height: 5vh;
+    max-height: 15vh;
+}

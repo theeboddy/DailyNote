@@ -6,15 +6,32 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
+    "crypto-browserify": "^3.12.0",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken-promisified": "^1.0.3",
+    "mongoose": "^8.0.1",
+    "nodemon": "^3.0.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.5",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "nodemon src/server/connect.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1"
   }
 }

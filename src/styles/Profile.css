@@ -1,0 +1,40 @@
+.profileBlock {
+    display: flex;
+    margin: 5% auto;
+    padding: 1%;
+    border: 3px solid black;
+    width: 60%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.imgBlock {
+    width: 10%;
+    height: 30%;
+    
+
+}
+
+.imgProfile {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.infoProfile {
+    display: flex;
+    justify-content: space-around; 
+    text-align: center;
+    align-items: center;
+}
+
+.infoProfile h3 {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 370px) {
+    h3 {
+        font-size: 80%;
+    }
+}

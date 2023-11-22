@@ -1,0 +1,122 @@
+div {
+    width: 100%;
+}
+
+.register {
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 3%;
+    padding-top: 1%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 50%;
+    margin: 7% auto;
+}
+
+.register h1 {
+    margin: 1% auto;
+}
+
+.linkSignIn {
+    margin: 1% auto;
+}
+
+.singIn {
+    margin: 1% auto;
+}
+
+.register h2 {
+    margin: 2% auto;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+.inputContainer p {
+    margin-top: 1%;
+    font-size: 75%;
+    background-color: black;
+    color: aliceblue;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+input {
+    border-radius: 3px;
+    height: 4vh;
+    font-size: 95%;
+    padding: 0.5%;
+}
+
+.imageInput {
+    border-radius: 3px;
+    border: 2px solid black;
+    height: 4vh;
+    font-size: 95%;
+    display: flex;
+    align-items: center
+}
+
+select {
+    border-radius: 3px;
+    height: 4vh;
+    font-size: 95%;
+    padding: 0.5%;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.btnContainer button {
+    background-color: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 1%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnContainer button:not([disabled]):hover {
+    background-color: black;
+    color: aliceblue;
+    border: 1px solid white;
+    transition: background-color 0.3s ease;
+}
+
+.linkToPage:hover {
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 450px) {
+    label {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .register h2 {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .qustion {
+        font-size: 50%;
+    }
+}

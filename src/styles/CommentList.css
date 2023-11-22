@@ -1,0 +1,16 @@
+
+@media (max-width: 1130px) {
+    .titleCommentList {
+        font-size: 90%;
+    }
+}
+@media (max-width: 555px) {
+    .titleCommentList {
+        font-size: 70%;
+    }
+}
+@media (max-width: 555px) {
+    .loadingCommentP {
+        font-size: 70%;
+    }
+}

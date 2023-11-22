@@ -1,0 +1,77 @@
+.authBlock {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 3%;
+    padding-top: 1%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40%;
+    margin: 10% auto;
+}
+
+.authBlock h1 {
+    margin: 1% auto;
+}
+
+.goToPost {
+    margin: 1% auto;
+}
+
+.authBlock h2 {
+    margin: 2% auto;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+input {
+    border-radius: 3px;
+    height: 4vh;
+    font-size: 95%;
+    padding: 0.5%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+.btnContainer button {
+    background-color: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 1%;
+    cursor: pointer;
+    width: 35%;
+    transition: background-color 0.3s ease;
+}
+
+.btnContainer button:hover {
+    background: black;
+    color: aliceblue;
+    border: 1px solid white;
+    transition: background-color 0.3s ease;
+}
+
+.linkToPage:hover {
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 450px) {
+    label {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .authBlock h2 {
+        font-size: 50%;
+    }
+}
