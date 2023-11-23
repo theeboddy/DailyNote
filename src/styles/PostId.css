@@ -1,0 +1,60 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    margin: 1% auto;
+}
+
+.loadingBlock {
+    text-align: center;
+    width: 25%;
+    display: flex;
+    margin: 15% auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 0.5%;
+}
+
+.postDetails {
+    margin: 2% auto;
+    width: 70%;
+    padding: 1%;
+    border: 3px solid black;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.imgPostId {
+    margin: 0 auto;
+    display: flex;
+    width: 65%;
+    height: 40%;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 2%;
+}
+
+.authorPostId {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1%;
+}
+
+.titlePostId {
+    margin-bottom: 1%;
+}
+
+.bodyPostId {
+    margin: 1%;
+}
+
+@media (max-width: 600px) {
+    .titlePostId, .bodyPostId, .authorPostId {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .titlePostId, .bodyPostId, .authorPostId {
+        font-size: 50%;
+    }
+}

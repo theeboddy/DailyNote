@@ -117,7 +117,7 @@ const Login = () => {
                 <p className="qustion">
                     У вас нет аккаунта?<br />
                     <span className="line">
-                    {/*put router link here*/}
+                    
                         <Link className="linkToPage" to="/registration">Зарегистрироваться</Link>
                     </span>
                 </p>

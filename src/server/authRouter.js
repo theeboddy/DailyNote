@@ -10,6 +10,7 @@ router.post('/auth', controller.auth)
 router.get('/users', authMiddleWare, controller.getUsers)
 router.post('/posts', postController.posts)
 router.get('/posts', postController.getPosts)
+router.get('/posts/:id', postController.getPostById);
 router.delete('/posts/:id', postController.deletePost)
 router.post('/posts/:postId/comments', postController.addComment);
 router.get('/posts/:postId/comments', postController.getComments);

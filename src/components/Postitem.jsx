@@ -17,6 +17,18 @@ export const PostItem = ({remove, handleFetchPosts, ...props}) => {
 
     console.log(auth, props.post)
 
+    const handleOpenPostDetails = () => {
+        const pathPosts = '/posts';
+        const postId = props.post.id;
+        console.log(postId)
+        // Проверка на наличие postId перед использованием
+        if (postId) {
+          router(`${pathPosts}/${postId}`, { state: { postId } });
+        } else {
+          console.error('Post ID is null or undefined.');
+        }
+      };
+
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:5000/authR/posts/${props.post.id}`)
@@ -83,7 +95,7 @@ export const PostItem = ({remove, handleFetchPosts, ...props}) => {
 
                 </div>
                 <div className="post_btn">
-                        <MyButton onClick={() => router(`/posts/${props.post.id}`)}>Открыть</MyButton>
+                        <MyButton onClick={handleOpenPostDetails}>Открыть</MyButton>
                         {auth.name === props.post.username ? (<MyButton onClick={handleDelete}>Удалить</MyButton>)
                         : (<></>)}
                         
