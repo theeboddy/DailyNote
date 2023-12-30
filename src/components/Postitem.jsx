@@ -7,34 +7,32 @@ import MyComment from "./UI/comment/NewComment";
 import { MyInput } from "./UI/input/MyInput";
 import useAuth from "../context/useAuth";
 import CommentList from "./CommentList";
- 
-export const PostItem = ({remove, handleFetchPosts, ...props}) => {
+
+export const PostItem = ({ remove, handleFetchPosts, ...props }) => {
     const router = useNavigate()
     const [isExpanded, setIsExpanded] = useState(false)
-    const [comments, setComments] = useState([ ])
+    const [comments, setComments] = useState([])
     const [bodyComment, setBodyComment] = useState('')
     const { auth } = useAuth()
-
-    console.log(auth, props.post)
 
     const handleOpenPostDetails = () => {
         const pathPosts = '/posts';
         const postId = props.post.id;
         console.log(postId)
-        // Проверка на наличие postId перед использованием
+
         if (postId) {
-          router(`${pathPosts}/${postId}`, { state: { postId } });
+            router(`${pathPosts}/${postId}`, { state: { postId } });
         } else {
-          console.error('Post ID is null or undefined.');
+            console.error('Post ID is null or undefined.');
         }
-      };
+    };
 
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:5000/authR/posts/${props.post.id}`)
             props.remove(props.post);
             handleFetchPosts()
-        } catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
@@ -43,13 +41,12 @@ export const PostItem = ({remove, handleFetchPosts, ...props}) => {
         try {
             const { avatar, name, role } = auth;
             const newComment = { body: bodyComment, image: avatar, username: name, role: role };
-    
+
             setComments(prevComments => Array.isArray(prevComments) ? [...prevComments, newComment] : [newComment]);
             // setComments(() => [...comments, newComment])
             setBodyComment('');
             console.log(comments)
-    
-            // Теперь отправляем запрос
+
             await axios.post(`http://localhost:5000/authR/posts/${props.post.id}/comments`, newComment);
             fetchComments();
         } catch (e) {
@@ -57,67 +54,71 @@ export const PostItem = ({remove, handleFetchPosts, ...props}) => {
 
         }
     }
-        const fetchComments = async () => {
-            try {
-                
-                const response = await axios.get(
-                    `http://localhost:5000/authR/posts/${props.post.id}/comments`
-                );
+    const fetchComments = async () => {
+        try {
+
+            const response = await axios.get(
+                `http://localhost:5000/authR/posts/${props.post.id}/comments`
+            );
             console.log('Comments response:', response.data);
             setComments(response.data);
-            
-            } catch (e) {
-            console.log(e);
-            }
-        };
 
-        useEffect(() => {
-            if (isExpanded) {
-                fetchComments();
-            }
-          }, [isExpanded, props.post.id]);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    useEffect(() => {
+        if (isExpanded) {
+            fetchComments();
+        }
+    }, [isExpanded, props.post.id]);
+
+    useEffect(() => {
+        console.log(auth, props.post)
+    }, [auth])
 
     return (
         <div className="post" >
             <div className="postFirstSide">
                 <div className="post_info">
                     <div className="img_block">
-                        <img alt="фото" src={props.post.image}/>
+                        <img alt="фото" src={props.post.image} />
                         <h5>Автор: {props.post.username}</h5>
                     </div>
                     <div className="post_content" >
-                    <div className="title_container">
-                        <h3>{props.number}.</h3>
-                        <h3>{props.post.title}</h3>
-                    </div>
-                    <div className="postBody">{props.post.body}</div>
+                        <div className="title_container">
+                            <h3>{props.number}.</h3>
+                            <h3>{props.post.title}</h3>
+                        </div>
+                        <div className="postBody">{props.post.body}</div>
                     </div>
 
                 </div>
                 <div className="post_btn">
-                        <MyButton onClick={handleOpenPostDetails}>Открыть</MyButton>
-                        {auth.name === props.post.username ? (<MyButton onClick={handleDelete}>Удалить</MyButton>)
+                    <MyButton onClick={handleOpenPostDetails}>Открыть</MyButton>
+                    {auth.name === props.post.username ? (<MyButton onClick={handleDelete}>Удалить</MyButton>)
                         : (<></>)}
-                        
-                        <MyButton onClick={() => setIsExpanded(!isExpanded)}>
-                            {isExpanded ? "Скрыть" : "Комментарии"}
-                        </MyButton>
+
+                    <MyButton onClick={() => setIsExpanded(!isExpanded)}>
+                        {isExpanded ? "Скрыть" : "Комментарии"}
+                    </MyButton>
                 </div>
 
             </div>
             <div className={isExpanded ? "postSecondSide" : "hidden"}>
-                
-                <CommentList comments={comments}/>
+
+                <CommentList comments={comments} />
                 <div>
                     <MyInput
-                    placeholder="Ваш комментарий"
-                    value={bodyComment}
-                    onChange={e => setBodyComment(e.target.value)}
+                        placeholder="Ваш комментарий"
+                        value={bodyComment}
+                        onChange={e => setBodyComment(e.target.value)}
                     />
                     <MyButton onClick={handleAddComment}>Добавить</MyButton>
                     {/* <MyButton onClick={fetchComments}>Получить комментарии</MyButton> */}
                 </div>
             </div>
-      </div>
+        </div>
     )
 }

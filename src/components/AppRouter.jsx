@@ -11,7 +11,7 @@ import Profile from "../pages/Profile";
 const AppRouter = () => {
     return (  
         <Routes>
-            <Route path="/about" element={<About/>}/>
+            <Route index path="/about" element={<About/>}/>
             <Route exact path="/posts" element={<Posts/>}/>
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/auth" element={<Authorization/>}/>

@@ -14,16 +14,12 @@ const corsOptions = {
   
 const app = express()
 
-
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.use(cors(corsOptions));
 app.use(express.json())
 app.use("/authR", authRouter)
-
-
-
 
 const test = async () => {
     try {

@@ -7,73 +7,74 @@ import useAuth from "../context/useAuth";
 
 
 
-const PostForm = ({create}) => {
-    const [post, setPost] = useState({title: '', body: '', image: null, author: ''}) 
-    const [errMsg, setErrMsg] = useState('')
-    const errRef = useRef()
-    const { auth } = useAuth()
-    
-    const setImage = (e) => {
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const imageSrc = e.target.result;
-            setPost({ ...post, image: imageSrc });
-          };
-          reader.readAsDataURL(selectedFile);
-        }
+const PostForm = ({ create, onError }) => {
+  const [post, setPost] = useState({ title: '', body: '', image: null, author: '' })
+  const [errMsg, setErrMsg] = useState('')
+  const [success, setSuccess] = useState(false)
+  const errRef = useRef()
+  const { auth } = useAuth()
+
+  const setImage = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageSrc = e.target.result;
+        setPost({ ...post, image: imageSrc });
       };
-
-    const addNewPost = async (e) => {
-        e.preventDefault()
-        try {
-          const newPost = {
-            ...post, id: Date.now(), author: auth.name
-        }
-        create(newPost)
-        console.log("Отправляем запрос с данными: ", post);
-        const response = await axios.post('http://localhost:5000/authR/posts', newPost)
-        console.log("необходимые данные", auth, newPost)
-        
-        setPost({title: '', body: '', image: null})
-        console.log("Получен ответ от сервера: ", response.data);
-        } catch(err) {
-          if(!err?.response) {
-              setErrMsg('No Server Response')
-          }
-          else if (err.response?.status === 409) {
-              setErrMsg('Username Taken');
-          } else {
-              setErrMsg('Registration Failed')
-          }
-          errRef.current.focus();
-
-      }
+      reader.readAsDataURL(selectedFile);
     }
-    return ( 
-        <form>
-            <MyInput
-                type='file'
-                accept='image/*'
-                placeholder='Выберите фото дня'
-                onChange={setImage}
-                style={{padding: '1%'}}
-            />
-            <MyInput 
-                type='text' 
-                placeholder="Название поста"
-                value={post.title}
-                onChange={e => setPost({...post, title: e.target.value})}
-             />
-            <MyTextArea type='text'
-            placeholder="Содержание поста"
-            value={post.body}
-            onChange={e => setPost({...post, body: e.target.value})}
-            />
-            <MyButton onClick={addNewPost}>Создать запись</MyButton>
-      </form>
-     );
+  };
+
+  const addNewPost = async (e) => {
+    e.preventDefault()
+    try {
+      const newPost = {
+        ...post, id: Date.now(), author: auth.name
+      }
+      create(newPost)
+      console.log("Отправляем запрос с данными: ", post);
+      const response = await axios.post('http://localhost:5000/authR/posts', newPost)
+      console.log("необходимые данные", auth, newPost)
+
+      setPost({ title: '', body: '', image: null })
+      console.log("Получен ответ от сервера: ", response.data);
+      setSuccess(true)
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg('Ответ от сервера не получен')
+      }
+      else if (err.response?.status === 422) {
+        setErrMsg(err.response?.data?.message);
+      }
+      //errRef.current.focus();
+      onError(err);
+
+    }
+  }
+  return (
+    <form>
+      <MyInput
+        type='file'
+        accept='image/*'
+        placeholder='Выберите фото дня'
+        onChange={setImage}
+        style={{ padding: '1%' }}
+      />
+      <MyInput
+        type='text'
+        placeholder="Название поста"
+        value={post.title}
+        onChange={e => setPost({ ...post, title: e.target.value })}
+      />
+      <MyTextArea type='text'
+        placeholder="Содержание поста"
+        value={post.body}
+        onChange={e => setPost({ ...post, body: e.target.value })}
+      />
+      <MyButton onClick={addNewPost}>Создать запись</MyButton>
+    </form>
+  );
 }
- 
+
 export default PostForm;

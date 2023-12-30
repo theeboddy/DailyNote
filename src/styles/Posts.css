@@ -26,6 +26,16 @@
     text-align: center;
 }
 
+.errorBlock {
+    display: flex;
+    flex-direction: column;
+    
+}
+.errorBlock h3 {
+    margin: 2% auto;
+    text-align: center;
+}
+
 .loading {
     display: flex;
     justify-content: center;

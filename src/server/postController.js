@@ -4,9 +4,19 @@ class postController {
     async posts(req, res) {
         try {
             const {title, body, image, id, comments, author} = req.body
+            console.log('заголовок и боди:', title, body)
+            if (image == null) {
+                return res.status(422).json({message: 'Вы не выбрали изображение'})
+            }
+            if (!title) {
+                return res.status(422).json({message: 'Вы не ввели название'})
+            }
+            if (!body) {
+                return res.status(422).json({message: 'Вы не ввели содержание записи'})
+            }
             const post = new Post({title: title, body: body, image: image, id: id, comments: comments, username: author})
             await post.save()
-            console.log('Пост зарегестрирован в базу данных!', post)
+            console.log('Пост зарегестрирован в базу данных!', post.title, post.body, post.id, post.comments, post.author)
             return res.status(200)
         } catch(e) {
 

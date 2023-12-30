@@ -103,6 +103,37 @@ select {
     transition: background-color 0.3s ease;
 }
 
+.aboutErr {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutErr p {
+    margin: 2% auto; 
+    text-align: center;
+}
+
+.okeyBtnBlock {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.titleBlock {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    width: 111%;
+    margin-left: -5.5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
 @media (max-width: 450px) {
     label {
         font-size: 50%;
