@@ -3,7 +3,6 @@ import { Navigate, useHref, useNavigate } from "react-router-dom";
 import { MyButton } from "./UI/button/MyButton";
 import axios from "../api/axios";
 import { useState, useEffect } from "react";
-import MyComment from "./UI/comment/NewComment";
 import { MyInput } from "./UI/input/MyInput";
 import useAuth from "../context/useAuth";
 import CommentList from "./CommentList";

@@ -7,37 +7,35 @@
     text-align: center;
     border-bottom: 0.5px solid black;
 }
-.navbar_items {
+
+.navbar .nav_icon {
+    width: 4%;
+    margin-right: 2%;
+}
+
+.navbar .navbar_items {
     width: 100;
     text-align: center;
-    
     margin: 0.5% 1%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.nav_icon {
-    width: 4%;
-    margin-right: 2%;
-}
-
-.navbar_items a {
+.navbar .navbar_items a {
     margin-right: 4%;
     width: 18%;
     text-decoration: none;
     color: aliceblue;
 }
 
-
- .userInfo {
+.navbar .userInfo {
     display: flex;
     align-items: center;
-    /* margin-left: 55%; */
     justify-content: flex-end;
-} 
+}
 
-.imgProf {
+.navbar .userInfo img {
     width: 5%;
     height: 5%;
     border-radius: 17px;
@@ -45,22 +43,22 @@
     margin-right: -3%;
 }
 
-.navLink {
-    width: auto;
-}
-
 @media (max-width: 1290px) {
     .navLink {
         font-size: 80%;
     }
 }
+
 @media (max-width: 1035px) {
     .navLink {
         font-size: 60%;
     }
 }
+
 @media (max-width: 775px) {
     .navLink {
         font-size: 50%;
     }
 }
+
+/*# sourceMappingURL=Navbar.css.map */
