@@ -14,9 +14,6 @@ const Posts = () => {
   const [success, setSuccess] = useState(false)
   const [postError, setPostError] = useState(null);
 
-  // const [title, setTitle] = useState('')
-  // const [body, setBody] = useState('')
-
   const handleFetchPosts = async () => {
     try {
       const response = await axios.get('http://localhost:5000/authR/posts');

@@ -66,14 +66,11 @@ class postController {
             const postId = req.params.postId;
             const { username, role, image, body } = req.body;
 
-            
             const post = await Post.findOne({ id: postId });
 
             if (!post) {
                 return res.status(404).json({ message: 'Пост не найден' });
             }
-
-            
             post.comments.push({
                 username: username,
                 role: role,
@@ -81,7 +78,6 @@ class postController {
                 body: body
             });
 
-            
             await post.save();
 
             return res.status(200).json({ post });
